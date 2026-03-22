@@ -1,9 +1,12 @@
 ﻿using NUnit.Framework;
 using SauceDemoCheckoutAutomation.Drivers;
 using SauceDemoCheckoutAutomation.Pages;
+using SauceDemoCheckoutAutomation.Utilities;
+using SauceDemoCheckoutAutomation.Utilities.SauceDemoCheckoutAutomation.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json;
 
 namespace SauceDemoCheckoutAutomation.StepDefinitions
 {
@@ -12,13 +15,14 @@ namespace SauceDemoCheckoutAutomation.StepDefinitions
     {
         private readonly DriverContext _driverContext = driverContext;
         private readonly CheckoutPage _checkoutPage = checkoutPage;
+        private readonly CheckoutData _checkoutData = TestDataBuilder.LoadCheckoutData();
 
         [When(@"I enter valid checkout details and continue")]
         public void EnterValidCheckoutDetails()
         {
-            _checkoutPage.SetFirstName("Nipun");
-            _checkoutPage.SetLasttName("Adhikari");
-            _checkoutPage.SetPostalCode("1234");
+            _checkoutPage.SetFirstName(_checkoutData.FirstName);
+            _checkoutPage.SetLasttName(_checkoutData.LastName);
+            _checkoutPage.SetPostalCode(_checkoutData.PostalCode);
             _checkoutPage.ClickContinueButton();
             bool overviewScreen = _checkoutPage.VerifyOverviewScreen();
             Assert.IsTrue(overviewScreen,"Failed Overview header did not updated");

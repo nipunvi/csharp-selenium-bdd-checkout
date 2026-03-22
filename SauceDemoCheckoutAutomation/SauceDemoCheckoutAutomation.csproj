@@ -22,4 +22,13 @@
     <Folder Include="Features\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="TestData\checkoutData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

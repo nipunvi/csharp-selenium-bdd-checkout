@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using SauceDemoCheckoutAutomation.Drivers;
 using SauceDemoCheckoutAutomation.Pages;
+using SauceDemoCheckoutAutomation.Utilities;
+using SauceDemoCheckoutAutomation.Utilities.SauceDemoCheckoutAutomation.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +15,7 @@ namespace SauceDemoCheckoutAutomation.StepDefinitions
         private readonly DriverContext _driverContext = driverContext;
         private readonly LoginPage _loginPage = loginPage;
         private readonly ProductsPage _productsPage = productsPage;
+        private readonly Config _config = TestDataBuilder.LoadConfig();
 
         [Given(@"I am logged in as a valid user")]
         public void LoginAsAValidUser()
@@ -21,8 +24,8 @@ namespace SauceDemoCheckoutAutomation.StepDefinitions
             {
                 throw new Exception("Login page did not load");
             }
-            _loginPage.SetUserName("standard_user");
-            _loginPage.SetPassword("secret_sauce");
+            _loginPage.SetUserName(_config.Username);
+            _loginPage.SetPassword(_config.Password);
             _loginPage.ClickLogin();
             bool isNavigated = _productsPage.IsNavigated();
             Assert.IsTrue(isNavigated, "Login failed: User was not navigated to Products page.");
