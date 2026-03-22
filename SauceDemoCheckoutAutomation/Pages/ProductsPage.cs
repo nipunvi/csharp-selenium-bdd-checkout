@@ -10,8 +10,8 @@ namespace SauceDemoCheckoutAutomation.Pages
     public class ProductsPage(DriverContext driverContext):BasePage(driverContext)
     {
         private readonly By _productsPageTitle = By.XPath("//span[@class='title' and text()='Products']");
-        private readonly By _cartLink = By.ClassName("shopping_cart_link");
-        private readonly By _cartBadge = By.ClassName("shopping_cart_badge");
+        private readonly By _cartLink = By.XPath("//a[@data-test='shopping-cart-link']");
+        private readonly By _cartBadge = By.XPath("//span[@data-test='shopping-cart-badge']");
          
         public override bool IsNavigated()
         { 
