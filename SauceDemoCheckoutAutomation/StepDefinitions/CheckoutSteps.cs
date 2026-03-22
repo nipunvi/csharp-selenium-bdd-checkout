@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SauceDemoCheckoutAutomation.StepDefinitions
 {
@@ -29,6 +30,39 @@ namespace SauceDemoCheckoutAutomation.StepDefinitions
             
         }
 
+
+
+        [When(@"I leave checkout details empty")]
+        public void LeaveCheckoutDetailsEmpty() 
+        {
+            _checkoutPage.ClickContinueButton();
+        }
+
+        
+        [Then(@"I should see an error message indicating required fields")]
+        public void CheckoutPageAllFormValidation()
+        {
+
+            string firstNameEmptyError = "Error: First Name is required";
+            Assert.IsTrue(_checkoutPage.WaitForAnErrorText(firstNameEmptyError));
+
+            _checkoutPage.SetFirstName(_checkoutData.FirstName);
+            _checkoutPage.ClickContinueButton();
+
+
+            string lastNameEmptyError = "Error: Last Name is required";
+            Assert.IsTrue(_checkoutPage.WaitForAnErrorText(lastNameEmptyError));
+
+            _checkoutPage.SetFirstName(_checkoutData.LastName);
+            _checkoutPage.ClickContinueButton();
+
+
+            string postalCodeEmptyError = "Error: Postal Code is required";
+            Assert.IsTrue(_checkoutPage.WaitForAnErrorText(postalCodeEmptyError));
+
+
+        }
+
         [Then(@"the total price should be accurate")]
         public void ValidateTotalPrice()
         {
@@ -44,6 +78,17 @@ namespace SauceDemoCheckoutAutomation.StepDefinitions
 
 
         }
+
+        
+
+        [When(@"I Cancel the checkout at Overview")]
+        public void CancelTheCheckoutAtOverview()
+        {
+            _checkoutPage.ClickCancelButtonAtOverview();
+        }
+
+
+
 
         [When(@"I confirm the order")]
         public void ConfirmTheOrder()

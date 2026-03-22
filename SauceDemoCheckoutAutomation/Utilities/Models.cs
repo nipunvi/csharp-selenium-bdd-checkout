@@ -10,6 +10,8 @@ namespace SauceDemoCheckoutAutomation.Utilities
         {
             public string BaseUrl { get; set; }
             public string Username { get; set; }
+
+            public string lockedOutUser { get; set; }
             public string Password { get; set; }
             public string Browser { get; set; }
         }

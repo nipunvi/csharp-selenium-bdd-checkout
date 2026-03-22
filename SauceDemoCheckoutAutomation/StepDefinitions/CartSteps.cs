@@ -30,6 +30,19 @@ namespace SauceDemoCheckoutAutomation.StepDefinitions
             _scenarioContext["AddedProducts"] = products;
         }
 
+
+        [When(@"I remove ""(.*)"" from the cart")]
+        public void RemoveAAddedProductFromTheList(string productName)
+        { 
+            _productsPage.RemoveAddedProductFromTheCart(productName);
+        }
+
+        [Then(@"the Add to cart button for ""(.*)"" should be enabled")]
+        public void VerifyAdtoCardtButtonOfAProduct(string productName)
+        {
+            Assert.IsTrue(_productsPage.VerifyAddToCartButtonOfAProduct(productName));
+        }
+
         [Then(@"the cart badge should show correct number of items")]
         public void ItemNumberAtTheCartBadgeShouldbeCorrect()
         {
@@ -76,8 +89,12 @@ namespace SauceDemoCheckoutAutomation.StepDefinitions
         }
 
         
+        [Then(@"I should be navigate back to the product page")]
+        public void VerifyProductPageNavigation()
+        {
+            _productsPage.IsNavigated();
+        }
 
-        
 
 
         [Then(@"the products should be in the cart")]

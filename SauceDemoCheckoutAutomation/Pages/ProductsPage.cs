@@ -12,6 +12,7 @@ namespace SauceDemoCheckoutAutomation.Pages
         private readonly By _productsPageTitle = By.XPath("//span[@class='title' and text()='Products']");
         private readonly By _cartLink = By.ClassName("shopping_cart_link");
         private readonly By _cartBadge = By.ClassName("shopping_cart_badge");
+         
         public override bool IsNavigated()
         {
             return waitForElement(_productsPageTitle).Enabled;
@@ -29,6 +30,18 @@ namespace SauceDemoCheckoutAutomation.Pages
                 
             }
             
+        }
+
+        public void RemoveAddedProductFromTheCart(string productName)
+        {
+            By removeBtn = By.XPath($"//div[@data-test='inventory-item-name' and text()='{productName}']/ancestor::div[@data-test='inventory-item-description']//button[text()='Remove']");
+            waitForElement(removeBtn).Click();
+        }
+
+        public bool VerifyAddToCartButtonOfAProduct(string productName)
+        {
+            By addToCardtButton = By.XPath($"//div[@data-test='inventory-item-name' and text()='{productName}']/ancestor::div[@data-test='inventory-item-description']//button[text()='Add to cart']");
+            return waitForElement(addToCardtButton).Enabled;
         }
 
         public int GetCurrentCartBadgeNumber()

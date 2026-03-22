@@ -31,5 +31,11 @@ namespace SauceDemoCheckoutAutomation.Pages
         public void ClickLogin() {
             waitedClick(_loginButton);
         }
+
+        public bool loginErrorValidation()
+        {
+            By loginError = By.XPath($"//h3[@data-test='error' and text()='Epic sadface: Sorry, this user has been locked out.']");
+            return waitForElement(loginError).Enabled;
+        }
     }
 }

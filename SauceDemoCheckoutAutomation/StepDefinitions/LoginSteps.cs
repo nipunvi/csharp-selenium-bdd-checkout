@@ -6,6 +6,7 @@ using SauceDemoCheckoutAutomation.Utilities.SauceDemoCheckoutAutomation.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SauceDemoCheckoutAutomation.StepDefinitions
 {
@@ -30,6 +31,28 @@ namespace SauceDemoCheckoutAutomation.StepDefinitions
             bool isNavigated = _productsPage.IsNavigated();
             Assert.IsTrue(isNavigated, "Login failed: User was not navigated to Products page.");
         }
+        
+        [Given(@"I attempt to log in with invalid credentials")]
+        public void LoginAsLockedOutUser()
+        {
+            if (!_loginPage.IsNavigated())
+            {
+                throw new Exception("Login page did not load");
+            }
+            _loginPage.SetUserName(_config.lockedOutUser);
+            _loginPage.SetPassword(_config.Password);
+            _loginPage.ClickLogin();
+            
+
+        }
+
+
+        [Then(@"I should see an error message preventing access")]
+        public void ValidateLockedOutErrorMesssage() 
+        {
+            Assert.IsTrue(_loginPage.loginErrorValidation());
+        }
+
 
 
     }

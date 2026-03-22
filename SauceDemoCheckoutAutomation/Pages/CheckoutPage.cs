@@ -22,6 +22,8 @@ namespace SauceDemoCheckoutAutomation.Pages
         private readonly By _completedHeading = By.XPath("//span[@class='title' and contains(text(),'Complete!')]");
         private readonly By _itemPrices = By.ClassName("inventory_item_price");
         private readonly By _displayedTotal = By.ClassName("summary_subtotal_label");
+        private readonly By _formValidationErrorText = By.XPath("//h3[@data-test='error']");
+        private readonly By _cancelCheckoutAtOverview = By.Id("cancel");
 
         public override bool IsNavigated()
         {
@@ -90,6 +92,25 @@ namespace SauceDemoCheckoutAutomation.Pages
         {
             string total = waitForElement(_displayedTotal).GetAttribute("textContent")?.Split("$")[1]??"null";
             return total != null && total != "null"? double.Parse(total) : 0.00;
+        }
+
+       
+        
+        public string GetCurrentError()
+        {
+            string errotext = waitForElement(_formValidationErrorText)?.GetAttribute("textContent")??"No Error";
+            return errotext;
+        }
+
+        public bool WaitForAnErrorText(string errorText)
+        {
+            bool iserror = waitForElement(_formValidationErrorText).Enabled;
+            return iserror;
+        }
+
+        public void ClickCancelButtonAtOverview()
+        {
+            waitedClick(_cancelCheckoutAtOverview);
         }
 
 
