@@ -39,6 +39,17 @@ namespace SauceDemoCheckoutAutomation.Pages
             wait.Until(ExpectedConditions.ElementToBeClickable(locator)).SendKeys(keys);
         }
 
+        public IList<IWebElement> waitAndGetAllElements(By loactor)
+        {
+            WebDriverWait wait = new WebDriverWait(_driverContext.Driver, TimeSpan.FromSeconds(30));
+            return wait.Until(driver =>
+            {
+                var elements = driver.FindElements(loactor);
+                return elements.Count > 0 ? elements : null;
+
+            });
+        }
+
 
     }
 }

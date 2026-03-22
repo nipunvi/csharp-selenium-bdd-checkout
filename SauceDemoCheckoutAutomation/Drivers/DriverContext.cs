@@ -26,7 +26,10 @@ namespace SauceDemoCheckoutAutomation.Drivers
             {
 
                 case BrowserType.Chrome:
-                    Driver = new ChromeDriver();
+                    var options = new ChromeOptions();
+                    options.AddArgument("--user-data-dir=C:/TempProfile");
+                    options.AddArgument("--incognito");
+                    Driver = new ChromeDriver(options);
                     break;
 
                 case BrowserType.Edge:

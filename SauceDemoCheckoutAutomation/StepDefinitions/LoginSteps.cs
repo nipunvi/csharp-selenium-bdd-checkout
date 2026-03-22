@@ -8,18 +8,11 @@ using System.Text;
 namespace SauceDemoCheckoutAutomation.StepDefinitions
 {
     [Binding]
-    public class LoginSteps
+    public class LoginSteps(DriverContext driverContext, LoginPage loginPage, ProductsPage productsPage)
     {
-        private readonly DriverContext _driverContext;
-        private readonly LoginPage _loginPage;
-        private readonly ProductsPage _productsPage;
-
-        public LoginSteps(DriverContext driverContext, LoginPage loginPage,ProductsPage productsPage)
-        {
-            _driverContext = driverContext;
-            _loginPage = loginPage;
-            _productsPage = productsPage;
-        }
+        private readonly DriverContext _driverContext = driverContext;
+        private readonly LoginPage _loginPage = loginPage;
+        private readonly ProductsPage _productsPage = productsPage;
 
         [Given(@"I am logged in as a valid user")]
         public void LoginAsAValidUser()

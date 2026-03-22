@@ -132,19 +132,35 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line 6
   await testRunner.GivenAsync("I am logged in as a valid user", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
+                global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
+                            "Product Name"});
+                table1.AddRow(new string[] {
+                            "Sauce Labs Backpack"});
 #line 7
-  await testRunner.WhenAsync("I add a product to the cart", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
-#line 8
-  await testRunner.AndAsync("I proceed to checkout", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 9
-  await testRunner.AndAsync("I enter valid checkout details", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+  await testRunner.WhenAsync("I add the following products to the cart", ((string)(null)), table1, "When ");
 #line hidden
 #line 10
-  await testRunner.AndAsync("I confirm the order", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+  await testRunner.ThenAsync("the cart badge should show correct number of items", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 11
+  await testRunner.WhenAsync("I navigate to the cart", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 12
+  await testRunner.ThenAsync("the cart should reflect selected items accurately", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 13
+  await testRunner.WhenAsync("I proceed to checkout", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 14
+  await testRunner.AndAsync("I enter valid checkout details and continue", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 15
+  await testRunner.ThenAsync("the total price should be accurate", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 16
+  await testRunner.WhenAsync("I confirm the order", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 17
   await testRunner.ThenAsync("the order should be placed successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
@@ -152,16 +168,16 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
         }
         
         [global::NUnit.Framework.TestAttribute()]
-        [global::NUnit.Framework.DescriptionAttribute("Successful Checkout with multiple products")]
-        public async global::System.Threading.Tasks.Task SuccessfulCheckoutWithMultipleProducts()
+        [global::NUnit.Framework.DescriptionAttribute("Successful Checkout with multiple selected products")]
+        public async global::System.Threading.Tasks.Task SuccessfulCheckoutWithMultipleSelectedProducts()
         {
             string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "1";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Successful Checkout with multiple products", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Successful Checkout with multiple selected products", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 13
+#line 19
 this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -171,23 +187,41 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 14
+#line 20
   await testRunner.GivenAsync("I am logged in as a valid user", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 15
-  await testRunner.WhenAsync("I add multiple products to the cart", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
+                            "Product Name"});
+                table2.AddRow(new string[] {
+                            "Sauce Labs Backpack"});
+                table2.AddRow(new string[] {
+                            "Sauce Labs Bike Light"});
+#line 21
+  await testRunner.WhenAsync("I add the following products to the cart", ((string)(null)), table2, "When ");
 #line hidden
-#line 16
-  await testRunner.AndAsync("I proceed to checkout", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 25
+  await testRunner.ThenAsync("the cart badge should show correct number of items", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 17
-  await testRunner.AndAsync("I enter valid checkout details", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 26
+  await testRunner.WhenAsync("I navigate to the cart", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 18
-  await testRunner.AndAsync("I confirm the order", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 27
+  await testRunner.ThenAsync("the cart should reflect selected items accurately", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 19
-  await testRunner.ThenAsync("all selected products should be in the order summary", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 28
+  await testRunner.WhenAsync("I proceed to checkout", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 29
+  await testRunner.AndAsync("I enter valid checkout details and continue", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 30
+  await testRunner.ThenAsync("the total price should be accurate", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 31
+  await testRunner.WhenAsync("I confirm the order", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 32
+  await testRunner.ThenAsync("the order should be placed successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
