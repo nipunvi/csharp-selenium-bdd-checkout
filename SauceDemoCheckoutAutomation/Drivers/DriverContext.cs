@@ -1,0 +1,52 @@
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace SauceDemoCheckoutAutomation.Drivers
+{
+    public enum BrowserType
+    {
+        Chrome,
+        Edge,
+    }
+    public class DriverContext
+    {
+        public IWebDriver Driver { get; private set; }
+
+        public void InitDriver(BrowserType browser = BrowserType.Chrome)
+        {
+            if (Driver != null)
+                return;
+
+
+            switch (browser)
+            {
+
+                case BrowserType.Chrome:
+                    Driver = new ChromeDriver();
+                    break;
+
+                case BrowserType.Edge:
+                    Driver = new EdgeDriver();
+                    break;
+
+                default:
+                    throw new ArgumentException($"Browser {browser} not supported");
+            }
+
+            Driver.Manage().Window.Maximize();
+
+        }
+
+        public void QuitDriver()
+        {
+            if( Driver != null)
+            {
+                Driver.Quit();
+            }
+        }
+    }
+}
