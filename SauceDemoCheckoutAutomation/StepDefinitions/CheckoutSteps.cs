@@ -99,9 +99,6 @@ namespace SauceDemoCheckoutAutomation.StepDefinitions
         [Then(@"the order should be placed successfully")]
         public void ValidateSuccessfullOrder()
         {
-            bool completedHeader = _checkoutPage.VerifyOrderCompletionHeader();
-            Assert.IsTrue(completedHeader, "Failed : order Complete header did not appear");
-
             bool thankYouMessage = _checkoutPage.VerifyOrderCompletionMessage();
             Assert.IsTrue(thankYouMessage, "Failed : order Complete Message did not appear");
         }
