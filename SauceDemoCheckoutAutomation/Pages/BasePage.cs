@@ -1,10 +1,44 @@
-﻿using System;
+﻿using Io.Cucumber.Messages.Types;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SauceDemoCheckoutAutomation.Drivers;
+using SeleniumExtras.WaitHelpers;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace SauceDemoCheckoutAutomation.Pages
 {
-    public class BasePage
+    public abstract class BasePage
     {
+        public readonly DriverContext _driverContext;
+
+        public BasePage(DriverContext driverContext)
+        {
+            _driverContext = driverContext;
+        }
+
+        public abstract bool IsNavigated();
+
+
+        public IWebElement waitForElement(By locator,int timeout = 30)
+        {
+            WebDriverWait wait = new WebDriverWait(_driverContext.Driver, TimeSpan.FromSeconds(timeout));
+            return wait.Until(ExpectedConditions.ElementToBeClickable(locator));
+        }
+
+        public void waitedClick(By locator, int timeout = 30)
+        {
+            WebDriverWait wait = new WebDriverWait(_driverContext.Driver, TimeSpan.FromSeconds(timeout));
+            wait.Until(ExpectedConditions.ElementToBeClickable(locator)).Click();
+        }
+
+        public void waitedSendKeys(By locator,string keys, int timeout = 30)
+        {
+            WebDriverWait wait = new WebDriverWait(_driverContext.Driver, TimeSpan.FromSeconds(timeout));
+            wait.Until(ExpectedConditions.ElementToBeClickable(locator)).SendKeys(keys);
+        }
+
+
     }
 }

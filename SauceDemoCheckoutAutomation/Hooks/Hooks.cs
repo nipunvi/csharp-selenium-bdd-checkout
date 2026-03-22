@@ -15,7 +15,8 @@ namespace SauceDemoCheckoutAutomation.Hooks
         }
         [BeforeScenario]
         public void BeforeScenario() {
-            _driverContext.InitDriver(Enum.Parse<BrowserType>("Chrome",true));//send chrome from testcase
+            _driverContext.InitDriver(Enum.Parse<BrowserType>("Chrome",true));
+            _driverContext.Driver.Navigate().GoToUrl("https://www.saucedemo.com/");
 
         }
 
