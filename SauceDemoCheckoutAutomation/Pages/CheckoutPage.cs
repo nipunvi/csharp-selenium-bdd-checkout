@@ -13,19 +13,19 @@ namespace SauceDemoCheckoutAutomation.Pages
     {
 
         private readonly By _checkoutPageTitle = By.XPath("//span[@class='title' and starts-with(text(),'Checkout:')]");
-        private readonly By _firstNameInput = By.Name("firstName");
-        private readonly By _lastNameInput = By.Name("lastName");
-        private readonly By _postalCodeInput = By.Name("postalCode");
-        private readonly By _continueButton = By.Name("continue");
-        private readonly By _cancelButton = By.Name("cancel");
+        private readonly By _firstNameInput = By.XPath("//input[@name='firstName']");
+        private readonly By _lastNameInput = By.XPath("//input[@name='lastName']");
+        private readonly By _postalCodeInput = By.XPath("//input[@name='postalCode']");
+        private readonly By _continueButton = By.XPath("//input[@value='Continue']");
+        private readonly By _cancelButton = By.XPath("//button[text()='Cancel']");
         private readonly By _OverviewHeading = By.XPath("//span[@class='title' and contains(text(),'Overview')]");
-        private readonly By _finishButton = By.Id("finish");
+        private readonly By _finishButton = By.XPath("//button[text()='Finish']");
         private readonly By _thankYouMessage = By.XPath("//h2[text()='Thank you for your order!']");
         private readonly By _completedHeading = By.XPath("//span[@class='title' and contains(text(),'Complete!')]");
-        private readonly By _itemPrices = By.ClassName("inventory_item_price");
-        private readonly By _displayedTotal = By.ClassName("summary_subtotal_label");
+        private readonly By _itemPrices = By.XPath("//div[@data-test='inventory-item-price']");
+        private readonly By _displayedTotal = By.XPath("//div[@data-test='subtotal-label']");
         private readonly By _formValidationErrorText = By.XPath("//h3[@data-test='error']");
-        private readonly By _cancelCheckoutAtOverview = By.Id("cancel");
+        private readonly By _cancelCheckoutAtOverview = By.XPath("//button[text()='Cancel']");
 
         public override bool IsNavigated()
         {
