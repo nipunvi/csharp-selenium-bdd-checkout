@@ -31,17 +31,7 @@ namespace SauceDemoCheckoutAutomation.StepDefinitions
         }
 
 
-        [When(@"I remove ""(.*)"" from the cart")]
-        public void RemoveAAddedProductFromTheList(string productName)
-        { 
-            _productsPage.RemoveAddedProductFromTheCart(productName);
-        }
-
-        [Then(@"the Add to cart button for ""(.*)"" should be enabled")]
-        public void VerifyAdtoCardtButtonOfAProduct(string productName)
-        {
-            Assert.IsTrue(_productsPage.VerifyAddToCartButtonOfAProduct(productName));
-        }
+        
 
         [Then(@"the cart badge should show correct number of items")]
         public void ItemNumberAtTheCartBadgeShouldbeCorrect()
@@ -95,12 +85,16 @@ namespace SauceDemoCheckoutAutomation.StepDefinitions
             _productsPage.IsNavigated();
         }
 
-
-
-        [Then(@"the products should be in the cart")]
-        public void ThenTheProductsShouldBeInTheCart()
+        [When(@"I remove ""(.*)"" from the cart")]
+        public void RemoveAAddedProductFromTheList(string productName)
         {
-            
+            _productsPage.RemoveAddedProductFromTheCart(productName);
+        }
+
+        [Then(@"the Add to cart button for ""(.*)"" should be enabled")]
+        public void VerifyAdtoCardtButtonOfAProduct(string productName)
+        {
+            Assert.IsTrue(_productsPage.VerifyAddToCartButtonOfAProduct(productName));
         }
     }
 }

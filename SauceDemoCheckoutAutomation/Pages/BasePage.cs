@@ -26,19 +26,6 @@ namespace SauceDemoCheckoutAutomation.Pages
             WebDriverWait wait = new WebDriverWait(_driverContext.Driver, TimeSpan.FromSeconds(timeout));
             return wait.Until(ExpectedConditions.ElementToBeClickable(locator));
         }
-
-        public void waitedClick(By locator, int timeout = 30)
-        {
-            WebDriverWait wait = new WebDriverWait(_driverContext.Driver, TimeSpan.FromSeconds(timeout));
-            wait.Until(ExpectedConditions.ElementToBeClickable(locator)).Click();
-        }
-
-        public void waitedSendKeys(By locator,string keys, int timeout = 30)
-        {
-            WebDriverWait wait = new WebDriverWait(_driverContext.Driver, TimeSpan.FromSeconds(timeout));
-            wait.Until(ExpectedConditions.ElementToBeClickable(locator)).SendKeys(keys);
-        }
-
         public IList<IWebElement> waitAndGetAllElements(By loactor)
         {
             WebDriverWait wait = new WebDriverWait(_driverContext.Driver, TimeSpan.FromSeconds(30));

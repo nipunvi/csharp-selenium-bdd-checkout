@@ -32,7 +32,8 @@ namespace SauceDemoCheckoutAutomation.Pages
 
         public void clickCheckoutButton()
         {
-            waitedClick(_checkoutButton);
+            IWebElement element = waitForElement(_checkoutButton);
+            element.Click();
 
         }
     }

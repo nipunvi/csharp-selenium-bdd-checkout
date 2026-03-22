@@ -21,15 +21,19 @@ namespace SauceDemoCheckoutAutomation.Pages
         }  
         public void SetUserName(string username)
         {
-            waitedSendKeys(_usernameInput, username);
+            IWebElement element = waitForElement(_usernameInput);
+            element.SendKeys(username);
         }
 
         public void SetPassword(string password) {
-            waitedSendKeys(_passwordInput, password);
+            IWebElement element = waitForElement(_passwordInput);
+            element.SendKeys(password);
         }
 
         public void ClickLogin() {
-            waitedClick(_loginButton);
+
+            IWebElement element = waitForElement(_loginButton);
+            element.Click();
         }
 
         public bool loginErrorValidation()

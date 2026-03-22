@@ -14,7 +14,7 @@ namespace SauceDemoCheckoutAutomation.Pages
         private readonly By _cartBadge = By.ClassName("shopping_cart_badge");
          
         public override bool IsNavigated()
-        {
+        { 
             return waitForElement(_productsPageTitle).Enabled;
         }
 
@@ -26,7 +26,8 @@ namespace SauceDemoCheckoutAutomation.Pages
                 By product = By.XPath(addToCartButtonAtCurrentProduct);
                 IWebElement productWebelement = _driverContext.Driver.FindElement(product);
                 ((IJavaScriptExecutor)_driverContext.Driver).ExecuteScript("arguments[0].scrollIntoView(true);", productWebelement);
-                waitedClick(product);
+                IWebElement element = waitForElement(product);
+                element.Click();
                 
             }
             
@@ -46,13 +47,15 @@ namespace SauceDemoCheckoutAutomation.Pages
 
         public int GetCurrentCartBadgeNumber()
         {
+
             string itemsNumberAtCartBadge = waitForElement(_cartBadge).GetAttribute("textContent")??"0";
             return int.Parse(itemsNumberAtCartBadge);
         }
 
         public void NavigateToTheCart()
         {
-            waitedClick(_cartLink);
+            IWebElement element = waitForElement(_cartLink);
+            element.Click();
         }
 
     }

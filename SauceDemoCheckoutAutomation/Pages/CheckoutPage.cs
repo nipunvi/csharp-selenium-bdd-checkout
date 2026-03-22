@@ -31,27 +31,32 @@ namespace SauceDemoCheckoutAutomation.Pages
         }
 
         public void SetFirstName(string firstName) {
-            waitedSendKeys(_firstNameInput, firstName);
+            IWebElement element = waitForElement(_firstNameInput);
+            element.SendKeys(firstName);
         }
 
-        public void SetLasttName(string firstName)
+        public void SetLasttName(string lastName)
         {
-            waitedSendKeys(_lastNameInput, firstName);
+            IWebElement element = waitForElement(_lastNameInput);
+            element.SendKeys(lastName);
         }
 
         public void SetPostalCode(string postalcode)
         {
-            waitedSendKeys(_postalCodeInput, postalcode);
+            IWebElement element = waitForElement(_postalCodeInput);
+            element.SendKeys(postalcode);
         }
 
         public void ClickContinueButton()
         {
-            waitedClick(_continueButton);
+            IWebElement element = waitForElement(_continueButton);
+            element.Click();    
         }
 
         public void ClickCancelButton() 
         {
-            waitedClick(_cancelButton);
+            IWebElement element = waitForElement(_cancelButton);
+            element.Click();
         }
 
         public bool VerifyOverviewScreen()
@@ -61,7 +66,8 @@ namespace SauceDemoCheckoutAutomation.Pages
 
         public void ConfirmOrder()
         {
-            waitedClick(_finishButton);
+            IWebElement element = waitForElement(_finishButton);
+            element.Click();
         }
 
         public bool VerifyOrderCompletionHeader()
@@ -110,7 +116,8 @@ namespace SauceDemoCheckoutAutomation.Pages
 
         public void ClickCancelButtonAtOverview()
         {
-            waitedClick(_cancelCheckoutAtOverview);
+            IWebElement element = waitForElement(_cancelCheckoutAtOverview);
+            element.Click();
         }
 
 
