@@ -19,7 +19,7 @@ namespace SauceDemoCheckoutAutomation.Pages
         private readonly By _continueButton = By.XPath("//input[@value='Continue']");
         private readonly By _cancelButton = By.XPath("//button[text()='Cancel']");
         private readonly By _OverviewHeading = By.XPath("//span[@class='title' and contains(text(),'Overview')]");
-        private readonly By _finishButton = By.XPath("//button[text()='Finish']");
+        private readonly By _finishButton = By.XPath("//div[@class='cart_footer']//button[text()='Finish']");
         private readonly By _thankYouMessage = By.XPath("//h2[text()='Thank you for your order!']");
         private readonly By _completedHeading = By.XPath("//span[@class='title' and contains(text(),'Complete!')]");
         private readonly By _itemPrices = By.XPath("//div[@data-test='inventory-item-price']");

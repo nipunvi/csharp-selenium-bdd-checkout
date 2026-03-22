@@ -28,7 +28,7 @@ namespace SauceDemoCheckoutAutomation.Drivers
                 case BrowserType.Chrome:
                     var options = new ChromeOptions();
                     options.AddArgument("--headless");
-                    options.AddArgument("--no-sandbox");
+                    options.AddArguments("--disable-gpu", "--no-sandbox");
                     options.AddArgument("--disable-dev-shm-usage");
                     Driver = new ChromeDriver(options);
                     break;

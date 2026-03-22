@@ -9,7 +9,7 @@ namespace SauceDemoCheckoutAutomation.Pages
     public class CartPage(DriverContext driverContext):BasePage(driverContext)
     {
         private readonly By _itemsAddedToCart = By.XPath("//div[@class='cart_item']//div[@class='cart_item_label']/a/div");
-        private readonly By _checkoutButton = By.XPath("//button[text()='Checkout']");
+        private readonly By _checkoutButton = By.XPath("//div[@class='cart_footer']//button[text()='Checkout']");
         public override bool IsNavigated()
         {
             return FluentWaitForElement(_checkoutButton).Enabled;

@@ -10,8 +10,8 @@ namespace SauceDemoCheckoutAutomation.Pages
     public class ProductsPage(DriverContext driverContext):BasePage(driverContext)
     {
         private readonly By _productsPageTitle = By.XPath("//span[@class='title' and text()='Products']");
-        private readonly By _cartLink = By.XPath("//a[@data-test='shopping-cart-link']");
-        private readonly By _cartBadge = By.XPath("//span[@data-test='shopping-cart-badge']");
+        private readonly By _cartLink = By.XPath("//div[@class='header_label']/following-sibling::div//a");
+        private readonly By _cartBadge = By.XPath("//div[@class='header_label']/following-sibling::div//a/span");
          
         public override bool IsNavigated()
         { 
@@ -26,7 +26,9 @@ namespace SauceDemoCheckoutAutomation.Pages
                 By product = By.XPath(addToCartButtonAtCurrentProduct);
                 
                 IWebElement element = FluentWaitForElement(product);
+                Thread.Sleep(1000);
                 element.Click();
+                Thread.Sleep(1000);
                 
             }
             
