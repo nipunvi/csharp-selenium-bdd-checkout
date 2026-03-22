@@ -12,7 +12,7 @@ namespace SauceDemoCheckoutAutomation.Pages
         private readonly By _checkoutButton = By.Id("checkout");
         public override bool IsNavigated()
         {
-            return waitForElement(_checkoutButton).Enabled;
+            return FluentWaitForElement(_checkoutButton).Enabled;
         }
 
         public List<string> GetItemNamesInCart()
@@ -31,7 +31,7 @@ namespace SauceDemoCheckoutAutomation.Pages
 
         public void clickCheckoutButton()
         {
-            IWebElement element = waitForElement(_checkoutButton);
+            IWebElement element = FluentWaitForElement(_checkoutButton);
             element.Click();
 
         }

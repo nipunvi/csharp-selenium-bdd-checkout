@@ -22,10 +22,10 @@ namespace SauceDemoCheckoutAutomation.Pages
         {
             for (var i = 0; i < products.Count; i++) { 
                 var productName = products[i];
-                var addToCartButtonAtCurrentProduct = $"//div[@data-test='inventory-item-name' and text()='{productName}']/ancestor::div[@data-test='inventory-item-description']//button";
+                var addToCartButtonAtCurrentProduct = $"//div[@data-test='inventory-item-name' and text()='{productName}']/ancestor::div[@data-test='inventory-item-description']//button[text()='Add to cart']";
                 By product = By.XPath(addToCartButtonAtCurrentProduct);
                 
-                IWebElement element = waitForElement(product);
+                IWebElement element = FluentWaitForElement(product);
                 element.Click();
                 
             }
@@ -35,25 +35,25 @@ namespace SauceDemoCheckoutAutomation.Pages
         public void RemoveAddedProductFromTheCart(string productName)
         {
             By removeBtn = By.XPath($"//div[@data-test='inventory-item-name' and text()='{productName}']/ancestor::div[@data-test='inventory-item-description']//button[text()='Remove']");
-            waitForElement(removeBtn).Click();
+            FluentWaitForElement(removeBtn).Click();
         }
 
         public bool VerifyAddToCartButtonOfAProduct(string productName)
         {
             By addToCardtButton = By.XPath($"//div[@data-test='inventory-item-name' and text()='{productName}']/ancestor::div[@data-test='inventory-item-description']//button[text()='Add to cart']");
-            return waitForElement(addToCardtButton).Enabled;
+            return FluentWaitForElement(addToCardtButton).Enabled;
         }
 
         public int GetCurrentCartBadgeNumber()
         {
 
-            string itemsNumberAtCartBadge = waitForElement(_cartBadge).GetAttribute("textContent")??"0";
+            string itemsNumberAtCartBadge = FluentWaitForElement(_cartBadge).GetAttribute("textContent")??"0";
             return int.Parse(itemsNumberAtCartBadge);
         }
 
         public void NavigateToTheCart()
         {
-            IWebElement element = waitForElement(_cartLink);
+            IWebElement element = FluentWaitForElement(_cartLink);
             element.Click();
         }
 

@@ -63,15 +63,12 @@ namespace SauceDemoCheckoutAutomation.Pages
 
         public bool VerifyOverviewScreen()
         {
-            return waitForElement(_OverviewHeading).Enabled;
+            return FluentWaitForElement(_OverviewHeading).Enabled;
         }
 
         public void ConfirmOrder()
         {
-            IJavaScriptExecutor js = (IJavaScriptExecutor)driverContext.Driver;
-            js.ExecuteScript("window.scrollTo(0, document.body.scrollHeight);");
-            Thread.Sleep(2000);
-            IWebElement element = waitForElement(_finishButton);
+            IWebElement element = FluentWaitForElement(_finishButton);
             element.Click();
         }
 
@@ -82,7 +79,7 @@ namespace SauceDemoCheckoutAutomation.Pages
 
         public bool VerifyOrderCompletionMessage()
         {
-            return waitForElement(_thankYouMessage).Enabled;
+            return FluentWaitForElement(_thankYouMessage).Enabled;
         }
 
         public List<string> CalculateItemTotal()
@@ -101,7 +98,7 @@ namespace SauceDemoCheckoutAutomation.Pages
 
         public double GetDisplayedTotal()
         {
-            string total = waitForElement(_displayedTotal).GetAttribute("textContent")?.Split("$")[1]??"null";
+            string total = FluentWaitForElement(_displayedTotal).GetAttribute("textContent")?.Split("$")[1]??"null";
             return total != null && total != "null"? double.Parse(total) : 0.00;
         }
 
