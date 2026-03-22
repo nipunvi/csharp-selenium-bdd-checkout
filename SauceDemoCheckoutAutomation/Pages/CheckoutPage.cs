@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using Io.Cucumber.Messages.Types;
+using OpenQA.Selenium;
+using OpenQA.Selenium.BiDi.Emulation;
 using SauceDemoCheckoutAutomation.Drivers;
 using System;
 using System.Collections.Generic;
@@ -66,6 +68,9 @@ namespace SauceDemoCheckoutAutomation.Pages
 
         public void ConfirmOrder()
         {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driverContext.Driver;
+            js.ExecuteScript("window.scrollTo(0, document.body.scrollHeight);");
+            Thread.Sleep(2000);
             IWebElement element = waitForElement(_finishButton);
             element.Click();
         }

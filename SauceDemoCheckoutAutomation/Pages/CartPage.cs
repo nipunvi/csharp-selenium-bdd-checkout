@@ -8,12 +8,11 @@ namespace SauceDemoCheckoutAutomation.Pages
 {
     public class CartPage(DriverContext driverContext):BasePage(driverContext)
     {
-        private readonly By _cardtPageTitle = By.XPath("//span[@class='title' and text()='Your Cart']");
         private readonly By _itemsAddedToCart = By.XPath("//div[@class='cart_item']//div[@class='cart_item_label']/a/div");
         private readonly By _checkoutButton = By.Id("checkout");
         public override bool IsNavigated()
         {
-            return waitForElement(_cardtPageTitle).Enabled;
+            return waitForElement(_checkoutButton).Enabled;
         }
 
         public List<string> GetItemNamesInCart()

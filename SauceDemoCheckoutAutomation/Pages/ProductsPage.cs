@@ -24,8 +24,7 @@ namespace SauceDemoCheckoutAutomation.Pages
                 var productName = products[i];
                 var addToCartButtonAtCurrentProduct = $"//div[@data-test='inventory-item-name' and text()='{productName}']/ancestor::div[@data-test='inventory-item-description']//button";
                 By product = By.XPath(addToCartButtonAtCurrentProduct);
-                IWebElement productWebelement = _driverContext.Driver.FindElement(product);
-                ((IJavaScriptExecutor)_driverContext.Driver).ExecuteScript("arguments[0].scrollIntoView(true);", productWebelement);
+                
                 IWebElement element = waitForElement(product);
                 element.Click();
                 
