@@ -23,7 +23,7 @@ It follows **BDD (Behavior Driven Development)** principles using Reqnroll and i
 This framework is built using industry best practices:
 
 * ✅ Page Object Model (POM)
-* ✅ Dependency Injection using BoDi
+* ✅ Dependency Injection
 * ✅ Fluent Waits & Explicit Waits
 * ✅ Clean separation of concerns
 * ✅ Reusable components
@@ -42,7 +42,7 @@ SauceDemoAutomationFramework/
 │   ├── Features/           # Gherkin feature files
 │   ├── Hooks/              # Setup & teardown (Before/After Scenario)
 │   ├── TestData/           # JSON test data files
-│   ├── Utilities/          # Helpers (Waits, Config reader)
+│   ├── Utilities/          # Helpers (Models,Config reader)
 │   ├── DI/                 # Dependency Injection setup (Startup.cs)
 ├── .github/workflows/      # GitHub Actions CI
 ├── SauceDemoAutomation.sln
