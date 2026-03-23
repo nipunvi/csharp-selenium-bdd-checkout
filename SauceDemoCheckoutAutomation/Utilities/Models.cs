@@ -8,19 +8,19 @@ namespace SauceDemoCheckoutAutomation.Utilities
     {
         public class Config
         {
-            public string BaseUrl { get; set; }
-            public string Username { get; set; }
+            public required string BaseUrl { get; set; }
+            public required string Username { get; set; }
 
-            public string lockedOutUser { get; set; }
-            public string Password { get; set; }
-            public string Browser { get; set; }
+            public required string lockedOutUser { get; set; }
+            public required string Password { get; set; }
+            public required string Browser { get; set; }
         }
 
         public class CheckoutData
         {
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public string PostalCode { get; set; }
+            public required string FirstName { get; set; }
+            public required string LastName { get; set; }
+            public required string PostalCode { get; set; }
         }
     }
 
