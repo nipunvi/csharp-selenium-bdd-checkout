@@ -53,7 +53,7 @@ namespace SauceDemoCheckoutAutomation.StepDefinitions
             string lastNameEmptyError = "Error: Last Name is required";
             Assert.IsTrue(_checkoutPage.WaitForAnErrorText(lastNameEmptyError));
 
-            _checkoutPage.SetFirstName(_checkoutData.LastName);
+            _checkoutPage.SetLasttName(_checkoutData.LastName);
             _checkoutPage.ClickContinueButton();
 
 
