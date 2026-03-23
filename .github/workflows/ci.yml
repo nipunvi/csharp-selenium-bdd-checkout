@@ -5,7 +5,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   test:
@@ -26,5 +26,11 @@ jobs:
     - name: Build project
       run: dotnet build --no-restore
 
-    - name: Run tests
-      run: dotnet test --no-build
+    - name: Run tests with TRX logger
+      run: dotnet test --no-build --logger "trx;LogFileName=test_results.trx" --results-directory TestResults
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: TestResults/*.trx

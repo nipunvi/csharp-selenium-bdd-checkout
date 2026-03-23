@@ -27,10 +27,8 @@ namespace SauceDemoCheckoutAutomation.Drivers
 
                 case BrowserType.Chrome:
                     var options = new ChromeOptions();
-                    options.AddArgument("--headless");          // or "--headless=new" for modern Chrome
-                    options.AddArgument("--window-size=1920,1080"); // set viewport size
-
-                    // Incognito mode
+                    options.AddArgument("--headless");
+                    options.AddArgument("--window-size=1920,1080");
                     options.AddArgument("--incognito");
                     Driver = new ChromeDriver(options);
                     break;
