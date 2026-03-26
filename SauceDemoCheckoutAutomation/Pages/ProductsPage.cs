@@ -24,11 +24,9 @@ namespace SauceDemoCheckoutAutomation.Pages
                 var productName = products[i];
                 var addToCartButtonAtCurrentProduct = $"//div[@data-test='inventory-item-name' and text()='{productName}']/ancestor::div[@data-test='inventory-item-description']//button[text()='Add to cart']";
                 By product = By.XPath(addToCartButtonAtCurrentProduct);
-                
+
                 IWebElement element = FluentWaitForElement(product);
-                Thread.Sleep(1000);
                 element.Click();
-                Thread.Sleep(1000);
                 
             }
             
