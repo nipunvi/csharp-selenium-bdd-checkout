@@ -112,7 +112,8 @@ namespace SauceDemoCheckoutAutomation.Pages
 
         public bool WaitForAnErrorText(string errorText)
         {
-            bool iserror = waitForElement(_formValidationErrorText).Enabled;
+            By error = By.XPath($"//h3[@data-test='error' and text()='{errorText}']");
+            bool iserror = waitForElement(error).Enabled;
             return iserror;
         }
 
