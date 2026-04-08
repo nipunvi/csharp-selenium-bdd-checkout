@@ -11,7 +11,7 @@ namespace SauceDemoCheckoutAutomation.DI
     {
         public static void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<DriverContext>();
+            services.AddScoped<DriverContext>();
         }
     }
 }
